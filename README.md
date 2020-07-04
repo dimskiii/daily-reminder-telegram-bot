@@ -13,5 +13,5 @@ Install the dependencies and start the server.
 
 ```sh
 $ npm install
-$ node start
+$ node index
 ```

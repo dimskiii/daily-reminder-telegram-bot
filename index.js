@@ -30,6 +30,7 @@ bot.onText(/\/update/, (msg, match) => {
 
 bot.on('message', (msg) => {
     const meetingid = "General Meeting ID";
+    
     const chatId = msg.chat.id;
     if (msg.text.toString().indexOf(meetingid) === 0) {
         
@@ -39,15 +40,16 @@ bot.on('message', (msg) => {
 })
 
 var CronJob = require('cron').CronJob;
-var job = new CronJob('00 30 09 * * 1-5', function() {
+
+var morning = new CronJob('00 30 09 * * 1-5', function() {
     bot.sendMessage(globalID, 
         'Semangat Pagi! Jangan lupa update <a href=\"http://www.trello.com/\"><b>Trello</b></a>!\nGeser kerjaan kamu hari ini ke card <b>working</b> ya!', {parse_mode : "HTML"});
 }, null, true, 'Asia/Jakarta');
-job.start();
 
-var CronJob = require('cron').CronJob;
-var job = new CronJob('00 30 16 * * 1-5', function() {
+var afternoon = new CronJob('00 30 16 * * 1-5', function() {
     bot.sendMessage(globalID, 
-        'Semangat Sore! Jangan lupa update <a href=\"http://www.trello.com/\"><b>Trello</b></a>!\nGeser kerjaan kamu yang sudah selesai hari ini ke card <b>QA</b> atau <b>Comment</b> kerjaan kamu jika masih dalam progress ya!', {parse_mode : "HTML"});
+        'Semangat Pagi! Jangan lupa update <a href=\"http://www.trello.com/\"><b>Trello</b></a>!\nGeser kerjaan kamu hari ini ke card <b>working</b> ya!', {parse_mode : "HTML"});
 }, null, true, 'Asia/Jakarta');
-job.start();
+
+morning.start();
+afternoon.start();
