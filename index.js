@@ -1,6 +1,14 @@
 var TelegramBot = require('node-telegram-bot-api'),
     bot = new TelegramBot("1354607683:AAGPe_AdYNi2RgxlD0xhId8p7hGlUtMkxdI", { polling: true });
 
+var TelegramBot = require('node-telegram-bot-api'),
+    port = process.env.PORT || 443,
+    host = '0.0.0.0',  // probably this change is not required
+    externalUrl = 'https://igoid-bot.herokuapp.com/',
+    token = '1354607683:AAGPe_AdYNi2RgxlD0xhId8p7hGlUtMkxdI',
+    bot = new TelegramBot('1354607683:AAGPe_AdYNi2RgxlD0xhId8p7hGlUtMkxdI', { webHook: { port : port, host : host } });
+    bot.setWebHook(externalUrl + ':443/bot' + token);
+
 var CronJob = require('cron').CronJob;
 
 let globalID = null
